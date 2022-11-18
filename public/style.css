@@ -51,6 +51,17 @@ body {
     color: gray;
 }
 
+.more-results:active,
+.more-results:hover,
+.more-results {
+    text-decoration: none;
+    float: right;
+    font-size: 20px;
+    color: black;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
 .section-caption {
     text-align: center;
     font-size: 30px;
@@ -67,6 +78,11 @@ body {
     left: 50%;
     margin-left: -30px;
     border-bottom: 2px solid darkred;
+}
+
+.section-subcaption {
+    font-size: 25px;
+    margin: 20px 0 20px 20px;
 }
 
 .section-wrapper {
@@ -146,4 +162,30 @@ body {
 
 .section-blocks-track-item-description {
     margin: auto 10px
+}
+
+.list-tracks {
+    display: grid;
+    grid-template-columns: 64px 2fr 1fr 100px;
+    border-top: 1px solid gray;
+}
+
+.list-tracks-item:active,
+.list-tracks-item:hover,
+.list-tracks-item {
+    display: contents;
+    text-decoration: none;
+}
+
+.list-tracks-item-column {
+    height: 60px;
+    border-bottom: 1px solid gray;
+    display: flex;
+    align-items: center;
+    padding: 5px
+}
+
+.footer {
+    background-color: black;
+    height: 50px;
 }
