@@ -94,7 +94,8 @@ body {
 
 .section-blocks-item-box {
     width: 210px;
-    margin: auto;
+    height: 210px;;
+    margin: 0;
     position: relative;
 }
 
@@ -107,6 +108,7 @@ body {
 .section-blocks-item-box-img {
     height: 100%;
     width: 100%;
+    background: rgb(204, 204, 204);
 }
 
 .section-blocks-item-box-description {
@@ -166,9 +168,14 @@ body {
 
 .section-list-item:active,
 .section-list-item:hover,
+.section-list-item:hover:visited,
 .section-list-item {
     display: contents;
     text-decoration: none;
+}
+
+.section-list-item:hover:visited {
+    color: inherit;
 }
 
 .section-list-item-column {
