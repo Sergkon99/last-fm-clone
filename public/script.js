@@ -12,12 +12,24 @@ let inputSearch = document.querySelector('input');
 let searchContent = document.querySelector('.search-content');
 let searchCaption = document.querySelector('#search-section-caption');
 
+/**
+* Получить продолжительность в формате 'ММ:СС'.
+*
+* @param {number} duration Продолжительность в секундах.
+* @return {string} Продолжительность в формате 'ММ:СС'.
+*/
 function getDurationString(duration) {
     let minutes = Math.floor(duration / 60);
     let seconds = duration - minutes * 60;
     return `${minutes}:${seconds > 9 ? seconds : '0' + seconds}`;
 }
 
+/**
+* Получить теги в виде строки.
+*
+* @param {json} tags Слоаврь с тегами.
+* @return {string} Теги в формате 'tag1 | tag2 | ...'.
+*/
 function getTagsString(tags) {
     let tagsArr = [];
     for(let i = 0; i < tags.length; ++i) {
@@ -28,6 +40,12 @@ function getTagsString(tags) {
     return tagsArr.join(' | ');
 }
 
+/**
+* Отправить запрос на сервер.
+*
+* @param {json} params Query-параметры get запроса.
+* @return {json} Результат запроса.
+*/
 async function sendAPIRequest(params) {
     let getParamsList = [];
     for(key in params) {
@@ -53,6 +71,12 @@ async function sendAPIRequest(params) {
     return response;
 }
 
+/**
+* Добавить трек(при поиске) на страницу.
+*
+* @param {json} track Данные трека.
+* @return {void}
+*/
 async function addSearchTrack(track) {
     sendAPIRequest({method: 'track.getInfo', track: track['name'], artist: track['artist'], limit: 1})
         .then(response => response['track'] ?? {})
@@ -82,6 +106,12 @@ async function addSearchTrack(track) {
         .catch(err => console.warn(`Ошибка при установке трека ${err}`));
 }
 
+/**
+* Добавить альбом(при поиске) на страницу.
+*
+* @param {json} album Данные альбома.
+* @return {void}
+*/
 async function addSearchAlbum(album) {
     sendAPIRequest({method: 'album.getinfo', album: album['name'], artist: album['artist'], limit: 1})
         .then(response => response['album'] ?? {})
@@ -113,6 +143,12 @@ async function addSearchAlbum(album) {
         .catch(err => console.warn(`Ошибка при установке альбома ${err}`));
 } 
 
+/**
+* Добавить исполнителя(при поиске) на страницу.
+*
+* @param {json} artist Данные исполнителя.
+* @return {void}
+*/
 async function addSearchArtist(artist) {
     sendAPIRequest({method: 'artist.getinfo', artist: artist['name'], limit: 1})
         .then(response => response['artist'] ?? {})
@@ -142,6 +178,12 @@ async function addSearchArtist(artist) {
         .catch(err => console.warn(`Ошибка при установке исполнителя ${err}`));
 }
 
+/**
+* Добавить исполнителя(список популярных) на страницу.
+*
+* @param {json} artist Данные исполнителя.
+* @return {void}
+*/
 async function addTopArtist(artist) {
     sendAPIRequest({method: 'artist.getinfo', mbid: artist['mbid'], limit: 1})
         .then(response => response['artist'] ?? {})
@@ -165,6 +207,12 @@ async function addTopArtist(artist) {
         .catch(err => console.warn(`Ошибка при установке исполнителя ${err}`));
 }
 
+/**
+* Добавить трек(список популярных) на страницу.
+*
+* @param {json} track Данные трека.
+* @return {void}
+*/
 async function addTopTracks(track) {
     sendAPIRequest({method: 'track.getInfo', track: track['name'], artist: track['artist']['name'], limit: 1})
         .then(response => response['track'] ?? {})
@@ -192,6 +240,11 @@ async function addTopTracks(track) {
         .catch(err => console.warn(`Ошибка при установке трека ${err}`));
 }
 
+/**
+* Заполнить список популярных исполнителей.
+*
+* @return {void}
+*/
 function fillTopArtists() {
     sendAPIRequest({method: 'chart.gettopartists', limit: 8})
         .then(response => (response['artists'] ?? {})['artist'] ?? [])
@@ -199,6 +252,11 @@ function fillTopArtists() {
         .catch(err => console.warn(`Ошибка при получении списка исполнителей ${err}`));
 }
 
+/**
+* Заполнить список популярных треков.
+*
+* @return {void}
+*/
 function fillTopTracks() {
     sendAPIRequest({method: 'chart.gettoptracks', limit: 8})
         .then(response => (response['tracks'] ?? {})['track'] ?? [])
@@ -206,6 +264,11 @@ function fillTopTracks() {
         .catch(err => console.warn(`Ошибка при получении списка треков ${err}`));
 }
 
+/**
+* Заполнить результаты поиска.
+*
+* @return {void}
+*/
 async function fillSearchResult(search) {
     sendAPIRequest({method: 'artist.search', artist: search, limit: 8})
         .then(response => response['results']['artistmatches']['artist'])
@@ -223,6 +286,11 @@ async function fillSearchResult(search) {
         .catch(err => console.warn(`Ошибка при поиске треков ${err}`));
 }
 
+/**
+* Очистить результаты поиска.
+*
+* @return {void}
+*/
 function clearSearchResults() {
     searchAlbumsBlock.innerHTML = '';
     searchArtistBlock.innerHTML = '';
