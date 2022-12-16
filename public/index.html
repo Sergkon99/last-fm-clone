@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico"/>
+    <link rel="stylesheet" href="%PUBLIC_URL%/style.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
@@ -23,15 +24,322 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <div class="header">
+      <a class="header-link" href="https://www.last.fm/">Last.fm</a>
+      <div class="header-search">
+        <input placeholder="Поиск музыки...">
+      </div>
+    </div>
+    <div class="main-page">
+      <div class="search-content">
+        <!-- Поиск - исполнители-->
+        <div class="section-wrapper">
+          <div class="section-caption">Результаты поиска "тут строка поиска"</div>
+          <div class="section-subcaption">Исполнители</div>
+          <div class="section-blocks">
+            <a class="section-blocks-item-box" href="">
+              <img class="section-blocks-item-box-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+              <div class="section-blocks-item-box-description">
+                <div class="text-main-white">John Lennon</div>
+                <div class="text-secondary">rock | pop | 70s | british</div>
+              </div>
+            </a>
+            <a class="section-blocks-item-box" href="">
+              <img class="section-blocks-item-box-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+              <div class="section-blocks-item-box-description">
+                <div class="text-main-white">John Lennon</div>
+                <div class="text-secondary">rock | pop | 70s | british</div>
+              </div>
+            </a>
+            <a class="section-blocks-item-box" href="">
+              <img class="section-blocks-item-box-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+              <div class="section-blocks-item-box-description">
+                <div class="text-main-white">John Lennon</div>
+                <div class="text-secondary">rock | pop | 70s | british</div>
+              </div>
+            </a>
+            <a class="section-blocks-item-box" href="">
+              <img class="section-blocks-item-box-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+              <div class="section-blocks-item-box-description">
+                <div class="text-main-white">John Lennon</div>
+                <div class="text-secondary">rock | pop | 70s | british</div>
+              </div>
+            </a>
+            <a class="section-blocks-item-box" href="">
+              <img class="section-blocks-item-box-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+              <div class="section-blocks-item-box-description">
+                <div class="text-main-white">John Lennon</div>
+                <div class="text-secondary">rock | pop | 70s | british</div>
+              </div>
+            </a>
+            <a class="section-blocks-item-box" href="">
+              <img class="section-blocks-item-box-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+              <div class="section-blocks-item-box-description">
+                <div class="text-main-white">John Lennon</div>
+                <div class="text-secondary">rock | pop | 70s | british</div>
+              </div>
+            </a>
+            <a class="section-blocks-item-box" href="">
+              <img class="section-blocks-item-box-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+              <div class="section-blocks-item-box-description">
+                <div class="text-main-white">John Lennon</div>
+                <div class="text-secondary">rock | pop | 70s | british</div>
+              </div>
+            </a>
+            <a class="section-blocks-item-box" href="">
+              <img class="section-blocks-item-box-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+              <div class="section-blocks-item-box-description">
+                <div class="text-main-white">John Lennon</div>
+                <div class="text-secondary">rock | pop | 70s | british</div>
+              </div>
+            </a>
+          </div>
+          <a class="section-more-results" href="">Больше исполнителей...</a>
+        </div>
+        <!-- Поиск - альбомы -->
+        <div class="section-wrapper">
+          <div class="section-subcaption">Альбомы</div>
+          <div class="section-blocks">
+            <div class="section-blocks-item-box">
+              <a class="section-blocks-item-search-link" href="">
+                <img class="section-blocks-item-box-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+                <div class="section-blocks-item-box-description">
+                  <div class="text-main-white">Auscultate</div>
+                  <div class="text-secondary">rock | pop | 70s | british</div>
+                </div>
+              </a>
+            </div>
+            <div class="section-blocks-item-box">
+              <a class="section-blocks-item-search-link" href="">
+                <img class="section-blocks-item-box-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+                <div class="section-blocks-item-box-description">
+                  <div class="text-main-white">Auscultate</div>
+                  <div class="text-secondary">rock | pop | 70s | british</div>
+                </div>
+              </a>
+            </div>
+            <div class="section-blocks-item-box">
+              <a class="section-blocks-item-search-link" href="">
+                <img class="section-blocks-item-box-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+                <div class="section-blocks-item-box-description">
+                  <div class="text-main-white">Auscultate</div>
+                  <div class="text-secondary">rock | pop | 70s | british</div>
+                </div>
+              </a>
+            </div>
+            <div class="section-blocks-item-box">
+              <a class="section-blocks-item-search-link" href="">
+                <img class="section-blocks-item-box-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+                <div class="section-blocks-item-box-description">
+                  <div class="text-main-white">Auscultate</div>
+                  <div class="text-secondary">rock | pop | 70s | british</div>
+                </div>
+              </a>
+            </div>
+            <div class="section-blocks-item-box">
+              <a class="section-blocks-item-search-link" href="">
+                <img class="section-blocks-item-box-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+                <div class="section-blocks-item-box-description">
+                  <div class="text-main-white">Auscultate</div>
+                  <div class="text-secondary">rock | pop | 70s | british</div>
+                </div>
+              </a>
+            </div>
+            <div class="section-blocks-item-box">
+              <a class="section-blocks-item-search-link" href="">
+                <img class="section-blocks-item-box-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+                <div class="section-blocks-item-box-description">
+                  <div class="text-main-white">Auscultate</div>
+                  <div class="text-secondary">rock | pop | 70s | british</div>
+                </div>
+              </a>
+            </div>
+            <div class="section-blocks-item-box">
+              <a class="section-blocks-item-search-link" href="">
+                <img class="section-blocks-item-box-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+                <div class="section-blocks-item-box-description">
+                  <div class="text-main-white">Auscultate</div>
+                  <div class="text-secondary">rock | pop | 70s | british</div>
+                </div>
+              </a>
+            </div>
+            <div class="section-blocks-item-box">
+              <a class="section-blocks-item-search-link" href="">
+                <img class="section-blocks-item-box-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+                <div class="section-blocks-item-box-description">
+                  <div class="text-main-white">Auscultate</div>
+                  <div class="text-secondary">rock | pop | 70s | british</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <a class="section-more-results" href="">Больше альбомов...</a>
+        </div>
+        <!-- Поиск - треки -->
+        <div class="section-wrapper">
+          <div class="section-subcaption">Треки</div>
+          <div class="section-list">
+            <a class="section-list-item" href="">
+              <img class="section-list-item-column" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+              <div class="section-list-item-column">Imagine</div>
+              <div class="section-list-item-column">John Lennon</div>
+              <div class="section-list-item-column">5:32</div>
+            </a>
+            <a class="section-list-item" href="">
+              <img class="section-list-item-column" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+              <div class="section-list-item-column">Imagine</div>
+              <div class="section-list-item-column">John Lennon</div>
+              <div class="section-list-item-column">5:32</div>
+            </a>
+            <a class="section-list-item" href="">
+              <img class="section-list-item-column" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+              <div class="section-list-item-column">Imagine</div>
+              <div class="section-list-item-column">John Lennon</div>
+              <div class="section-list-item-column">5:32</div>
+            </a>
+            <a class="section-list-item" href="">
+              <img class="section-list-item-column" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+              <div class="section-list-item-column">Imagine</div>
+              <div class="section-list-item-column">John Lennon</div>
+              <div class="section-list-item-column">5:32</div>
+            </a>
+          </div>
+          <a class="section-more-results" href="">Больше треков...</a>
+        </div>
+      </div>
+      <div class="main-content">
+        <!-- Исполнители -->
+        <div class="section-wrapper">
+          <div class="section-caption">Исполнители</div>
+          <div class="section-blocks">
+            <a class="section-blocks-item-ring" href="">
+              <img class="section-blocks-item-ring-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+              <div class="section-blocks-item-ring-description">
+                <div class="text-main">John Lennon</div>
+                <div class="text-secondary">rock | pop | 70s | british</div>
+              </div>
+            </a>
+            <a class="section-blocks-item-ring" href="">
+              <img class="section-blocks-item-ring-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+              <div class="section-blocks-item-ring-description">
+                <div class="text-main">John Lennon</div>
+                <div class="text-secondary">rock | pop | 70s | british</div>
+              </div>
+            </a>
+            <a class="section-blocks-item-ring" href="">
+              <img class="section-blocks-item-ring-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+              <div class="section-blocks-item-ring-description">
+                <div class="text-main">John Lennon</div>
+                <div class="text-secondary">rock | pop | 70s | british</div>
+              </div>
+            </a>
+            <a class="section-blocks-item-ring" href="">
+              <img class="section-blocks-item-ring-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+              <div class="section-blocks-item-ring-description">
+                <div class="text-main">John Lennon</div>
+                <div class="text-secondary">rock | pop | 70s | british</div>
+              </div>
+            </a>
+            <a class="section-blocks-item-ring" href="">
+              <img class="section-blocks-item-ring-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+              <div class="section-blocks-item-ring-description">
+                <div class="text-main">John Lennon</div>
+                <div class="text-secondary">rock | pop | 70s | british</div>
+              </div>
+            </a>
+            <a class="section-blocks-item-ring" href="">
+              <img class="section-blocks-item-ring-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+              <div class="section-blocks-item-ring-description">
+                <div class="text-main">John Lennon</div>
+                <div class="text-secondary">rock | pop | 70s | british</div>
+              </div>
+            </a>
+            <a class="section-blocks-item-ring" href="">
+              <img class="section-blocks-item-ring-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+              <div class="section-blocks-item-ring-description">
+                <div class="text-main">John Lennon</div>
+                <div class="text-secondary">rock | pop | 70s | british</div>
+              </div>
+            </a>
+            <a class="section-blocks-item-ring" href="">
+              <img class="section-blocks-item-ring-img" src="https://lastfm.freetls.fastly.net/i/u/770x0/fc819d605ec8412eb50abb4bf0b51e16.jpg" alt="">
+              <div class="section-blocks-item-ring-description">
+                <div class="text-main">John Lennon</div>
+                <div class="text-secondary">rock | pop | 70s | british</div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- Популярные треки -->
+        <div class="section-wrapper">
+          <div class="section-caption">Популярные треки</div>
+          <div class="section-blocks">
+            <div class="section-blocks-rect-item">
+              <a href="">
+                <img class="section-blocks-rect-item-img" src="https://lastfm.freetls.fastly.net/i/u/300x300/44419885c277bffd6c585a39a2ab0884.jpg" alt="">
+              </a>
+              <div class="section-blocks-rect-item-description">
+                <div class="text-main">Imagine</div>
+                <div class="text-main">John Lennon</div>
+                <div class="text-secondary">rock | pop | 70s | british</div>
+              </div>
+            </div>
+            <div class="section-blocks-rect-item">
+              <a href="">
+                <img class="section-blocks-rect-item-img" src="https://lastfm.freetls.fastly.net/i/u/300x300/44419885c277bffd6c585a39a2ab0884.jpg" alt="">
+              </a>
+              <div class="section-blocks-rect-item-description">
+                <div class="text-main">Imagine</div>
+                <div class="text-main">John Lennon</div>
+                <div class="text-secondary">rock | pop | 70s | british</div>
+              </div>
+            </div>
+            <div class="section-blocks-rect-item">
+              <a href="">
+                <img class="section-blocks-rect-item-img" src="https://lastfm.freetls.fastly.net/i/u/300x300/44419885c277bffd6c585a39a2ab0884.jpg" alt="">
+              </a>
+              <div class="section-blocks-rect-item-description">
+                <div class="text-main">Imagine</div>
+                <div class="text-main">John Lennon</div>
+                <div class="text-secondary">rock | pop | 70s | british</div>
+              </div>
+            </div>
+            <div class="section-blocks-rect-item">
+              <a href="">
+                <img class="section-blocks-rect-item-img" src="https://lastfm.freetls.fastly.net/i/u/300x300/44419885c277bffd6c585a39a2ab0884.jpg" alt="">
+              </a>
+              <div class="section-blocks-rect-item-description">
+                <div class="text-main">Imagine</div>
+                <div class="text-main">John Lennon</div>
+                <div class="text-secondary">rock | pop | 70s | british</div>
+              </div>
+            </div>
+            <div class="section-blocks-rect-item">
+              <a href="">
+                <img class="section-blocks-rect-item-img" src="https://lastfm.freetls.fastly.net/i/u/300x300/44419885c277bffd6c585a39a2ab0884.jpg" alt="">
+              </a>
+              <div class="section-blocks-rect-item-description">
+                <div class="text-main">Imagine</div>
+                <div class="text-main">John Lennon</div>
+                <div class="text-secondary">rock | pop | 70s | british</div>
+              </div>
+            </div>
+            <div class="section-blocks-rect-item">
+              <a href="">
+                <img class="section-blocks-rect-item-img" src="https://lastfm.freetls.fastly.net/i/u/300x300/44419885c277bffd6c585a39a2ab0884.jpg" alt="">
+              </a>
+              <div class="section-blocks-rect-item-description">
+                <div class="text-main">Imagine</div>
+                <div class="text-main">John Lennon</div>
+                <div class="text-secondary">rock | pop | 70s | british</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      footer
+    </div>
   </body>
 </html>
