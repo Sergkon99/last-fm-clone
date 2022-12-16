@@ -46,6 +46,18 @@ body {
     color: gray;
 }
 
+.text-secondary-white {
+    color: whitesmoke;
+}
+
+.remove-link-decoration:active,
+.remove-link-decoration:hover,
+.remove-link-decoration:visited,
+.remove-link-decoration {
+    text-decoration: none;
+    color: inherit;
+}
+
 .section-more-results:active,
 .section-more-results:hover,
 .section-more-results {
@@ -171,11 +183,6 @@ body {
 .section-list-item:hover:visited,
 .section-list-item {
     display: contents;
-    text-decoration: none;
-}
-
-.section-list-item:hover:visited {
-    color: inherit;
 }
 
 .section-list-item-column {
@@ -187,6 +194,23 @@ body {
 }
 
 .footer {
+    padding-top: 40px;
+    padding-bottom: 20px;
     background-color: black;
-    height: 50px;
+    display: flex;
+}
+
+.footer-item {
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.footer-item ul {
+    padding-left: 0;
+}
+
+.footer-item li {
+    padding-bottom: 5px;
+    list-style: none;
+    font-size: 15px;
 }

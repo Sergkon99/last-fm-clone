@@ -69,7 +69,7 @@ async function addSearchTrack(track) {
             }
             const trackDuration = Math.floor(parseInt(trackInfo['duration']) / 1000);
             const template = `
-                <a class="section-list-item" href="${trackLink}">
+                <a class="section-list-item remove-link-decoration" href="${trackLink}">
                     <img class="section-list-item-column" src="${trackImg}" alt="">
                     <div class="section-list-item-column">${trackTitle}</div>
                     <div class="section-list-item-column">${trackArtistName}</div>
@@ -114,7 +114,7 @@ async function addSearchAlbum(album) {
 } 
 
 async function addSearchArtist(artist) {
-    sendAPIRequest({method: 'artist.getinfo', mbid: artist['mbid'], limit: 1})
+    sendAPIRequest({method: 'artist.getinfo', artist: artist['name'], limit: 1})
         .then(response => response['artist'] ?? {})
         .then(artistInfo => {
             const artistName = artistInfo['name'];
@@ -240,6 +240,7 @@ inputSearch.addEventListener('keydown', function(e) {
             searchCaption.innerHTML = `Результаты поиска "${inputSearch.value}"`;
             clearSearchResults();
             fillSearchResult(inputSearch.value);
+            inputSearch.value = '';
         }
     }
   });
