@@ -1,5 +1,7 @@
 const apiRoot = 'https://ws.audioscrobbler.com/2.0';
 const apiKey = '8ef354377433e8ae799fd09796eecff0';
+const maxTagsLen = 33;
+const sepTagsLen = 3;
 
 let searchArtistBlock = document.querySelector('#search-artists');
 let searchAlbumsBlock = document.querySelector('#search-albums');
@@ -9,8 +11,6 @@ let artistBlock = document.querySelector('#artists');
 let tracksBlock = document.querySelector('#tracks');
 
 let inputSearch = document.querySelector('input');
-let searchContent = document.querySelector('.search-content');
-let searchCaption = document.querySelector('#search-section-caption');
 
 /**
 * Получить продолжительность в формате 'ММ:СС'.
@@ -32,10 +32,12 @@ function getDurationString(duration) {
 */
 function getTagsString(tags) {
     let tagsArr = [];
+    let curLen = 0;
     for(let i = 0; i < tags.length; ++i) {
-        tagsArr.push(tags[i]['name']);
-        if(tagsArr.length > 2)
+        curLen += tags[i]['name'].length + sepTagsLen;
+        if(curLen > maxTagsLen)
             break;
+        tagsArr.push(tags[i]['name']);
     }
     return tagsArr.join(' | ');
 }
@@ -86,7 +88,7 @@ async function addSearchTrack(track) {
             const trackArtistName = (trackInfo['artist'] ?? {})['name'] || 'Неизвестный исполнитель';
             let trackImg = '';
             try {
-                trackImg = trackInfo['album']['image'][1]['#text'];
+                trackImg = trackInfo['album']['image'][3]['#text'];
             } catch(err) {
                 console.log(`Ошибка получения изобраения ${err}`);
                 trackImg = '';
@@ -120,7 +122,7 @@ async function addSearchAlbum(album) {
             const albumLink = albumInfo['url'];
             let albumImg = '';
             try {
-                albumImg = albumInfo['image'][2]['#text'];
+                albumImg = albumInfo['image'][3]['#text'];
             } catch(err) {
                 console.log(`Ошибка при получении изобраения ${err}`);
                 albumImg = '';
@@ -129,6 +131,7 @@ async function addSearchAlbum(album) {
             const template = `
                 <div class="section-blocks-item-box">
                     <a class="section-blocks-item-search-link" href="${albumLink}">
+                    <div class="blacker_blur"></div>
                     <img class="section-blocks-item-box-img" src="${albumImg}" alt="">
                     <div class="section-blocks-item-box-description">
                         <div class="text-main-white">${albumName}</div>
@@ -157,7 +160,7 @@ async function addSearchArtist(artist) {
             const artistLink = artistInfo['url'];
             let artistImg = '';
             try {
-                artistImg = artistInfo['image'][1]['#text'];
+                artistImg = artistInfo['image'][3]['#text'];
             } catch(err) {
                 console.log(`Не удалось получить изобраение ${err}`);
                 artistImg = '';
@@ -165,12 +168,13 @@ async function addSearchArtist(artist) {
             const artistTags = getTagsString((artistInfo['tags'] ?? {})['tag'] || []);
             const template = `
                 <a class="section-blocks-item-box" href="${artistLink}">
+                    <div class="blacker_blur"></div>
                     <img class="section-blocks-item-box-img" src="${artistImg}" alt="">
                     <div class="section-blocks-item-box-description">
                         <div class="text-main-white">${artistName}</div>
                         <div class="text-secondary">${artistTags}</div>
                     </div>
-                </a>
+                </div>
             `;
             if(typeof artistName !== 'undefined')
                 searchArtistBlock.insertAdjacentHTML('beforeend', template);
@@ -190,7 +194,7 @@ async function addTopArtist(artist) {
         .then(artistInfo => {
             const artistName = artistInfo['name'];
             const artistLink = artistInfo['url'];
-            const artistImg = artistInfo['image'][1]['#text'];
+            const artistImg = artistInfo['image'][3]['#text'];
             const artistTags = getTagsString(artistInfo['tags']['tag']);
             const template = `
                 <a class="section-blocks-item-ring" href="${artistLink}">
@@ -220,7 +224,7 @@ async function addTopTracks(track) {
             const trackTitle = trackInfo['name'];
             const trackLink = trackInfo['url'];
             const trackArtistName = (trackInfo['artist'] ?? {})['name'] || 'Неизвестный исполнитель';
-            const trackImg = (trackInfo['album'] ?? {})['image'][1]['#text'];
+            const trackImg = (trackInfo['album'] ?? {})['image'][3]['#text'];
             const tracksTags = getTagsString(trackInfo['toptags']['tag']);
             const template = `
                 <div class="section-blocks-rect-item">
@@ -297,21 +301,43 @@ function clearSearchResults() {
     searchTracksBlock.innerHTML = '';
 }
 
+/**
+* Основная функция инициализции страницы.
+*
+* @return {void}
+*/
+function main() {
+    const href = window.location.href;
+    if(href.indexOf('index') !== -1) { // Мы на главной
+        fillTopArtists();
+        fillTopTracks();
+    } else if(href.indexOf('search') !== -1) { // Мы на странице поиска
+        const queryParamsStr = window.location.search;
+        const queryParams = new URLSearchParams(queryParamsStr);
+        if(queryParams && queryParams.get('q')) {
+            const searchValue = queryParams.get('q');
+            let searchContent = document.querySelector('.search-content');
+            let searchCaption = document.querySelector('#search-section-caption');
+            searchContent.style.display = 'block';
+            searchCaption.innerHTML = `Результаты поиска "${searchValue}"`;
+            inputSearch.value = searchValue;
+            clearSearchResults();
+            fillSearchResult(searchValue);
+        } else {
+            window.location.replace('./index.html');
+        }
+    }
+}
+
 inputSearch.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') {
         if(typeof inputSearch.value !== 'string' || inputSearch.value === '') {
-            searchContent.style.display = 'none';
-            clearSearchResults();
+            window.location.replace('./index.html');
         }
         else {
-            searchContent.style.display = 'block';
-            searchCaption.innerHTML = `Результаты поиска "${inputSearch.value}"`;
-            clearSearchResults();
-            fillSearchResult(inputSearch.value);
-            inputSearch.value = '';
+            window.location.replace(`./search.html?q=${inputSearch.value}`);
         }
     }
-  });
+});
 
-fillTopArtists();
-fillTopTracks();
+main();

@@ -100,7 +100,7 @@ body {
 
 .section-blocks {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
 
@@ -109,6 +109,15 @@ body {
     height: 210px;;
     margin: 0;
     position: relative;
+}
+
+.blacker_blur {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: linear-gradient(to top, #000 0%, rgba(0,0,0,0) 100%);
 }
 
 .section-blocks-item-search::before {
@@ -190,7 +199,7 @@ body {
     border-bottom: 1px solid gray;
     display: flex;
     align-items: center;
-    padding: 5px
+    padding: 5px;
 }
 
 .footer {
