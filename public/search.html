@@ -31,16 +31,25 @@
       </div>
     </div>
     <div class="main-page">
-      <div class="main-content">
-        <!-- Исполнители -->
+      <div class="search-content">
+        <!-- Поиск - исполнители-->
         <div class="section-wrapper">
-          <div class="section-caption">Популярные исполнители</div>
-          <div class="section-blocks" id="artists"></div>
+          <div class="section-caption" id="search-section-caption">Результаты поиска "тут строка поиска"</div>
+          <div class="section-subcaption">Исполнители</div>
+          <div class="section-blocks" id="search-artists"></div>
+          <a class="section-more-results" href="https://www.last.fm/">Больше исполнителей...</a>
         </div>
-        <!-- Популярные треки -->
+        <!-- Поиск - альбомы -->
         <div class="section-wrapper">
-          <div class="section-caption">Популярные треки</div>
-          <div class="section-blocks"  id="tracks"></div>
+          <div class="section-subcaption">Альбомы</div>
+          <div class="section-blocks" id="search-albums"></div>
+          <a class="section-more-results" href="https://www.last.fm/">Больше альбомов...</a>
+        </div>
+        <!-- Поиск - треки -->
+        <div class="section-wrapper">
+          <div class="section-subcaption">Треки</div>
+          <div class="section-list" id="search-tracks"></div>
+          <a class="section-more-results" href="https://www.last.fm/">Больше треков...</a>
         </div>
       </div>
     </div>
