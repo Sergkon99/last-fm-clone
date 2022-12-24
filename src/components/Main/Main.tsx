@@ -1,20 +1,15 @@
-function Main() {
+import { Artists } from "../Artists/Artists"
+import { Tracks } from "../Tracks/Tracks"
+
+export const Main = () => {
     return (
         <div className="main-page">
             <div className="main-content">
                 {/* Исполнители */}
-                <div className="section-wrapper">
-                    <div className="section-caption">Популярные исполнители</div>
-                    <div className="section-blocks" id="artists"></div>
-                </div>
+                <Artists />
                 {/* Популярные треки */}
-                <div className="section-wrapper">
-                    <div className="section-caption">Популярные треки</div>
-                    <div className="section-blocks"  id="tracks"></div>
-                </div>
+                <Tracks />
             </div>
         </div>
     )
 }
-
-export default Main;
