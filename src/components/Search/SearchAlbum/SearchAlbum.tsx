@@ -19,8 +19,8 @@ export const SearchAlbum = (props) => {
     let albumTags = '';
 
     if(typeof albumInfo !== 'undefined') {
-        albumName = albumInfo['name'];
-        albumLink = albumInfo['url'];
+        albumName = albumName || albumInfo['name'];
+        albumLink = albumLink || albumInfo['url'];
         try {
             albumImg = albumInfo['image'][3]['#text'];
             albumTags = getTagsString(albumInfo['tags']['tag']);

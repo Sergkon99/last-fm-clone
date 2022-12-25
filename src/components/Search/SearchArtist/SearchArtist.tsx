@@ -19,8 +19,8 @@ export const SearchArtist = (props) => {
     let artistTags = ''
 
     if(typeof artistInfo !== 'undefined') {
-        artistName = artistInfo['name'];
-        artistLink = artistInfo['url'];
+        artistName = artistName || artistInfo['name'];
+        artistLink = artistLink || artistInfo['url'];
         try {
             artistTags = getTagsString(artistInfo['toptags']['tag']);
         }

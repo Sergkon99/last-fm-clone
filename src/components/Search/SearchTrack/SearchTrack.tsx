@@ -4,27 +4,27 @@ import { getDurationString, getTagsString } from "../../../utils/common";
 
 export const SearchTrack = (props) => {
     const {track} = props;
-    console.log('track', track);
+    console.log('SearchTrack track', track);
     const [trackInfo, setTrackInfo] = useState({});
 
     useEffect(() => {
-        sendAPIRequest({method: 'track.getInfo', track: track['name'], artist: track['artist']['name'], limit: 1})
+        sendAPIRequest({method: 'track.getInfo', track: track['name'], artist: track['artist'], limit: 1})
             .then((response) => setTrackInfo(response['track']));
     }, [track['name'], track['artist']['name']]);
     console.log('trackInfo', trackInfo);
 
     let trackTitle = track['name'];
     let trackLink = track['url'];
-    let trackArtistName = track['artist']['name'] || 'Неизвестный исполнитель';
+    let trackArtistName = track['artist']['name'];
     let trackImg = track['image'][3]['#text'];
     let tracksTags = '';
     let trackDuration = 0;
 
     if(typeof trackInfo !== 'undefined') {
-        trackTitle = trackInfo['name'];
-        trackLink = trackInfo['url'];
+        trackTitle = trackTitle || trackInfo['name'];
+        trackLink = trackLink || trackInfo['url'];
         try {
-            trackArtistName = (trackInfo['artist'] ?? {})['name'] || 'Неизвестный исполнитель';
+            trackArtistName = trackArtistName || (trackInfo['artist'] ?? {})['name'] || 'Неизвестный исполнитель';
             trackImg = (trackInfo['album'] ?? {})['image'][3]['#text'];
             tracksTags = getTagsString(trackInfo['toptags']['tag']);
             trackDuration = Math.floor(parseInt(trackInfo['duration']) / 1000);
