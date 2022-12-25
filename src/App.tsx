@@ -3,8 +3,8 @@ import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import { Main } from './components/Main/Main';
 
-function App() {
-  return (
+export const App = () => {
+    return (
         <div className='App'>
             <Header />
             <Main />
@@ -12,5 +12,3 @@ function App() {
         </div>
     );
 }
-
-export default App;
