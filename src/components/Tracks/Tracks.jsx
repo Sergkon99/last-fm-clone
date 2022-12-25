@@ -8,7 +8,6 @@ export const Tracks = () => {
         sendAPIRequest({method: 'chart.gettoptracks', limit: 8})
             .then((response) => setTracks(response['tracks']['track']));
     }, []);
-    console.log('top tracks', tracks);
 
     return (
         <div className="section-wrapper">

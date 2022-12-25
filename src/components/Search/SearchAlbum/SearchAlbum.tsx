@@ -4,14 +4,12 @@ import { getTagsString } from "../../../utils/common";
 
 export const SearchAlbum = (props) => {
     const {album} = props;
-    console.log('SearchAlbum', album);
     const [albumInfo, setAlbumInfo] = useState({});
 
     useEffect(() => {
         sendAPIRequest({method: 'album.getInfo', album: album['name'], artist: album['artist'], limit: 1})
             .then((response) => setAlbumInfo(response['album']));
     }, [album['name'], album['artist']]);
-    console.log('trackInfo', albumInfo);
 
     let albumName = album['name'];
     let albumLink = album['url'];

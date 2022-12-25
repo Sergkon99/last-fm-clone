@@ -4,14 +4,12 @@ import { getDurationString, getTagsString } from "../../../utils/common";
 
 export const SearchTrack = (props) => {
     const {track} = props;
-    console.log('SearchTrack track', track);
     const [trackInfo, setTrackInfo] = useState({});
 
     useEffect(() => {
         sendAPIRequest({method: 'track.getInfo', track: track['name'], artist: track['artist'], limit: 1})
             .then((response) => setTrackInfo(response['track']));
     }, [track['name'], track['artist']['name']]);
-    console.log('trackInfo', trackInfo);
 
     let trackTitle = track['name'];
     let trackLink = track['url'];

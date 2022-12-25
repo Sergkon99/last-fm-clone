@@ -8,7 +8,6 @@ export const Artists = () => {
         sendAPIRequest({method: 'chart.gettopartists', limit: 8})
             .then((response) => setArtists(response['artists']['artist']));
     }, []);
-    console.log('top artsits', artsits);
 
     return (
         <div className="section-wrapper">
