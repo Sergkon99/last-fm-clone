@@ -1,6 +1,12 @@
 const apiRoot = 'https://ws.audioscrobbler.com/2.0';
 const apiKey = '8ef354377433e8ae799fd09796eecff0';
 
+/**
+* Отправить запрос на сервер.
+*
+* @param {json} params Query-параметры get запроса.
+* @return {json} Результат запроса.
+*/
 export async function sendAPIRequest(params) {
     let getParamsList = [];
     for(let key in params) {

@@ -11,11 +11,11 @@ export const Search = () => {
             <div className="search-content">
                 <div className="section-caption" id="search-section-caption">Результаты поиска "{searchValue}"</div>
                 {/* Поиск - исполнители */}
-                <SearchArtists />
+                <SearchArtists search={searchValue} />
                 {/* Поиск - альбомы */}
-                <SearchAlbums />
+                <SearchAlbums search={searchValue} />
                 {/* Поиск - треки */}
-                <SearchTracks />
+                <SearchTracks search={searchValue} />
             </div>
         </div>
     )
