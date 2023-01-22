@@ -4,40 +4,43 @@ import { getTagsString } from '../../utils/common'
 
 export const Track = (props) => {
     const {track} = props;
-    const [trackInfo, setTrackInfo] = useState({});
+    const [trackInfo, setTrackInfo] = useState({
+        'title': track['name'],
+        'link': track['url'],
+        'artist': track['artist']['name'] || 'Неизвестный исполнитель',
+        'img': track['image'][3]['#text'],
+        'tags': ''
+    });
+    const [fullTrackInfo, setFullTrackInfo] = useState({});
 
     useEffect(() => {
         sendAPIRequest({method: 'track.getInfo', track: track['name'], artist: track['artist']['name'], limit: 1})
-            .then((response) => setTrackInfo(response['track']));
+            .then((response) => {
+                const track = response['track'];
+                if(track)
+                    setFullTrackInfo({
+                        'title': trackInfo['title'] || track['name'],
+                        'link': trackInfo['link'] || track['url'],
+                        'artist': (track['artist'] ? track['artist']['name'] : trackInfo['artist']) || 'Неизвестный исполнитель',
+                        'img':  track['album'] ? track['album']['image'][3]['#text'] : trackInfo['img'],
+                        'tags': getTagsString(track['toptags'] ? track['toptags']['tag'] : '')
+                    });
+            });
     }, []);
 
-    let trackTitle = track['name'];
-    let trackLink = track['url'];
-    let trackArtistName = track['artist']['name'] || 'Неизвестный исполнитель';
-    let trackImg = track['image'][3]['#text'];
-    let tracksTags = ''
-
-    if(typeof trackInfo !== 'undefined') {
-        trackTitle = trackInfo['name'];
-        trackLink = trackInfo['url'];
-        try {
-            trackArtistName = (trackInfo['artist'] ?? {})['name'] || 'Неизвестный исполнитель';
-            trackImg = (trackInfo['album'] ?? {})['image'][3]['#text'];
-            tracksTags = getTagsString(trackInfo['toptags']['tag']);
-        }
-        catch
-        {}
-    }
+    useEffect(() => {
+        setTrackInfo({...trackInfo, ...fullTrackInfo});
+    }, [fullTrackInfo]);
 
     return (
         <div className="section-blocks-rect-item">
-            <a href={trackLink}>
-                <img className="section-blocks-rect-item-img" src={trackImg} alt="" />
+            <a href={trackInfo['link']}>
+                <img className="section-blocks-rect-item-img" src={trackInfo['img']} alt="" />
             </a>
             <div className="section-blocks-rect-item-description">
-                <div className="text-main">{trackTitle}</div>
-                <div className="text-main">{trackArtistName}</div>
-                <div className="text-secondary">{tracksTags}</div>
+                <div className="text-main">{trackInfo['title']}</div>
+                <div className="text-main">{trackInfo['artist']}</div>
+                <div className="text-secondary">{trackInfo['tags']}</div>
             </div>
         </div>
     )

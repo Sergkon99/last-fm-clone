@@ -14,7 +14,7 @@ export const SearchTracks = (props) => {
         <div className="section-wrapper">
             <div className="section-subcaption">Треки</div>
             <div className="section-list" id="search-tracks">
-                {tracks.map((track) => { return <SearchTrack track={track} key={track.name}/>; })}
+                {tracks.map((track, idx) => { return <SearchTrack track={track} key={track.name + idx}/>; })}
             </div>
             <a className="section-more-results" href="https://www.last.fm/">Больше треков...</a>
         </div>

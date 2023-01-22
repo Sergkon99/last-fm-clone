@@ -4,33 +4,31 @@ import { getTagsString } from "../../../utils/common";
 
 export const SearchArtist = (props) => {
     const {artist} = props;
-    const [artistInfo, setArtistInfo] = useState({});
+    const [artistInfo, setArtistInfo] = useState({
+        'link': artist['url'],
+        'name': artist['name'],
+        'img': artist['image'][3]['#text'],
+        'tags': ''
+    });
 
     useEffect(() => {
         sendAPIRequest({method: 'artist.getInfo', mbid: artist['mbid'], limit: 1})
-            .then((response) => setArtistInfo(response['artist']));
-    }, [artist['mbid']]);
+            .then((response) => {
+                const artist = response['artist'];
+                if(artist)
+                    setArtistInfo({
+                        ...artistInfo,
+                        'tags': getTagsString(artist['tags'] ? artist['tags']['tag'] : '')
+                    });
+            });
+    }, [artist]);
 
-    let artistName = artist['name'];
-    let artistLink = artist['url'];
-    let artistImg = artist['image'][3]['#text'];
-    let artistTags = ''
-
-    if(typeof artistInfo !== 'undefined') {
-        artistName = artistName || artistInfo['name'];
-        artistLink = artistLink || artistInfo['url'];
-        try {
-            artistTags = getTagsString(artistInfo['toptags']['tag']);
-        }
-        catch
-        {}
-    }
     return (
-        <a className="section-blocks-item-ring" href={artistLink}>
-            <img className="section-blocks-item-ring-img" src={artistImg} alt={artistName} />
+        <a className="section-blocks-item-ring" href={artistInfo['link']}>
+            <img className="section-blocks-item-ring-img" src={artistInfo['img']} alt={artistInfo['name']} />
             <div className="section-blocks-item-ring-description">
-                <div className="text-main">{artistName}</div>
-                <div className="text-secondary">{artistTags}</div>
+                <div className="text-main">{artistInfo['name']}</div>
+                <div className="text-secondary">{artistInfo['tags']}</div>
             </div>
         </a>
     )

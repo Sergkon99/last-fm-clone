@@ -14,7 +14,7 @@ export const SearchAlbums = (props) => {
         <div className="section-wrapper">
             <div className="section-subcaption">Альбомы</div>
             <div className="section-blocks" id="search-albums">
-                {albums.map((album) => { return <SearchAlbum album={album} key={album.name}/>; })}
+                {albums.map((album, idx) => { return <SearchAlbum album={album} key={album.name + idx}/>; })}
             </div>
             <a className="section-more-results" href="https://www.last.fm/">Больше альбомов...</a>
         </div>

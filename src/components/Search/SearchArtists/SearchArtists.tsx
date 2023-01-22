@@ -14,7 +14,7 @@ export const SearchArtists = (props) => {
         <div className="section-wrapper">
             <div className="section-subcaption">Исполнители</div>
             <div className="section-blocks" id="search-artists">
-                {artsits.map((artist) => { return <SearchArtist artist={artist} key={artist.name}/>; })}
+                {artsits.map((artist, idx) => { return <SearchArtist artist={artist} key={artist.name + idx}/>; })}
             </div>
             <a className="section-more-results" href="https://www.last.fm/">Больше исполнителей...</a>
         </div>
