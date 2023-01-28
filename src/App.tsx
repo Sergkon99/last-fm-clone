@@ -1,23 +1,24 @@
-import React from 'react';
+import { Routes, Route, Link } from "react-router-dom";
+import { Footer } from './components/Footer/Footer';
+import { Header } from './components/Header/Header';
+import { Main } from './components/Main/Main';
+import { Search } from './components/Search/Search';
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <p>
-//           Edit <code>src/App.tsx</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
+export const App = () => {
+    return (
+        <div className='App'>
+            <Header />
+            <Routes>
+                <Route path='/' element={<Main />} />
+                <Route path='search/:searchValue' element={<Search />} />
+                <Route path='*' element={
+                    <div className="main-page">
+                        <h1>Страница не найдена</h1>
+                        <div><Link to='/'>Вернуться на главную</Link></div>
+                    </div>
+                } />
+            </Routes>
+            <Footer />
+        </div>
+    );
+}
